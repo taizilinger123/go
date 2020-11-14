@@ -4,15 +4,28 @@ import (
 	"fmt"
 )
 
-func multi() {
-	for i := 0; i < 9; i++ {
-		for j := 0; j <= i; j++ {
-			fmt.Printf("%d*%d=%d\t", (i + 1), j+1, (i+1)*(j+1))
+func perfect(n int) bool {
+	var sum int = 0
+	for i := 1; i < n; i++ {
+		if n%i == 0 {
+			sum += i
 		}
-		fmt.Println()
+	}
+	return n == sum
+}
+
+func process(n int) {
+	for i := 1; i < n+1; i++ {
+		if perfect(i) {
+			fmt.Println(i)
+		}
 	}
 }
 
 func main() {
-	multi()
+	var n int
+	fmt.Scanf("%d", &n)
+	process(n)
 }
+
+// File -> Preferences -> Settings->User->Extensions->Run Code configuration->找到run code in terminal设置，打上√
