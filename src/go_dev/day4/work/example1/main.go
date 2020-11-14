@@ -17,7 +17,7 @@ func main() {
 	multi()
 }
 
-//把终端恢复默认值
+//这是把终端恢复默认值
 // {
 // 	"workbench.colorTheme":"Monokai",
 // 	"edit.fontSize":16,
