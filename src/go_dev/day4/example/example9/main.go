@@ -49,3 +49,7 @@ func main() {
 	//testArray()
 	testArray2()
 }
+
+// PS D:\project> go run "d:\project\src\go_dev\day4\example\example9\main.go"
+// (0,0)=1 (0,1)=2 (0,2)=3 (0,3)=4 (0,4)=5
+// (1,0)=6 (1,1)=7 (1,2)=8 (1,3)=9 (1,4)=10
