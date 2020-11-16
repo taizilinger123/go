@@ -6,7 +6,8 @@ import (
 
 func recusive(n int) {
 	fmt.Println("hello", n)
-	/*time.Sleep(time.Second)
+	/*fmt.Println("hello")
+	time.Sleep(time.Second)
 	if n > 10 {
 		return
 	}*/
