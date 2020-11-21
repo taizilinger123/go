@@ -70,6 +70,9 @@ func testMap4() {
 	delete(a, "key1")
 	fmt.Println()
 	trans(a)
+	//key2
+	//     key2 abc
+	//     key3 abc
 
 	fmt.Println(len(a))
 	//用for循环删除所有key
@@ -84,6 +87,7 @@ func testMap5() {
 	}
 	a[0][10] = 10
 	fmt.Println(a)
+	//[map[10:10] map[] map[] map[] map[]]
 }
 
 func main() {
