@@ -74,7 +74,7 @@ func testMap4() {
 	//     key2 abc
 	//     key3 abc
 
-	fmt.Println(len(a))
+	fmt.Println(len(a))   
 	//用for循环删除所有key
 }
 
