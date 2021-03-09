@@ -25,3 +25,6 @@ func main() {
 	}
 	fmt.Println(string(data))
 }
+
+// PS D:\project> go run "d:\project\src\go_dev\day5\example\example6\main.go"
+// {"name":"stu01","age":10,"score":80}
