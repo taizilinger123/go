@@ -10,8 +10,8 @@ type Car struct {
 	Age  int
 }
 
-func (c *Car) Set(name string, age int){
-	c.Name = name 
+func (c *Car) Set(name string, age int) {
+	c.Name = name
 	c.Age = age
 }
 
