@@ -28,8 +28,9 @@ func main() {
 	var car Carer
 	fmt.Println(car)
 
-	var bmw BMW
-    bmw.Name = "BMW"
-	car = &bmw
+	bmw := &BMW{
+		Name: "BMW",
+	}
+	car = bmw
 	car.Run()
 }

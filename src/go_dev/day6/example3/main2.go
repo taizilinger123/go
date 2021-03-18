@@ -12,15 +12,15 @@ type BMW struct {
 	Name string
 }
 
-func (p *BMW) GetName() string {
+func (p BMW) GetName() string {
 	return p.Name
 }
 
-func (p *BMW) Run() {
+func (p BMW) Run() {
 	fmt.Printf("%s is running\n", p.Name)
 }
 
-func (p *BMW) DiDi() {
+func (p BMW) DiDi() {
 	fmt.Printf("%s is didi\n", p.Name)
 }
 
@@ -29,7 +29,7 @@ func main() {
 	fmt.Println(car)
 
 	var bmw BMW
-    bmw.Name = "BMW"
-	car = &bmw
+	bmw.Name = "BMW"
+	car = bmw
 	car.Run()
 }
