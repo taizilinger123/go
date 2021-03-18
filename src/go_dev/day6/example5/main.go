@@ -8,5 +8,6 @@ func main() {
 
 	a = b
 	c := a.(int)
+	fmt.Printf("%d %T\n", a, a)
 	fmt.Printf("%d %T\n", c, c)
 }
