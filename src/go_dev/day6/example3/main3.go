@@ -56,3 +56,10 @@ func main() {
 	car = byd
 	car.Run()
 }
+
+
+//提交到https://github.com/taizilinger123/go
+//用windows的GUI
+//git add *
+//git   commit   -m  "20210318"
+//git   push   https://github.com/taizilinger123/go.git
