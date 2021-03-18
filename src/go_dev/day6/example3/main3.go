@@ -57,7 +57,6 @@ func main() {
 	car.Run()
 }
 
-
 //提交到https://github.com/taizilinger123/go
 //用windows的GUI
 //shenglei@LAPTOP-86RD7CIL MINGW64 /d/project (master)
