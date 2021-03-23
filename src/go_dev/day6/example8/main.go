@@ -1,12 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"reflect"
 )
 
 type Student struct {
-	Name  string
+	Name  string `json:"student_name"`
 	Age   int
 	Score float32
 	Sex   string
@@ -26,6 +27,7 @@ func (s Student) Set(name string, age int, score float32, sex string) {
 }
 
 func TestStruct(a interface{}) {
+	tye := reflect.TypeOf(a)
 	val := reflect.ValueOf(a)
 	kd := val.Kind()
 	if kd != reflect.Ptr && val.Elem().Kind() == reflect.Struct {
@@ -40,6 +42,9 @@ func TestStruct(a interface{}) {
 	}
 	fmt.Printf("struct has %d fields\n", num)
 
+	tag := tye.Elem().Field(0).Tag.Get("json")
+	fmt.Printf("tag=%s\n", tag)
+
 	numOfMethod := val.Elem().NumMethod()
 	fmt.Printf("struct has %d method\n", numOfMethod)
 	var params []reflect.Value
@@ -52,6 +57,9 @@ func main() {
 		Age:   18,
 		Score: 92.8,
 	}
+
+	result, _ := json.Marshal(a)
+	fmt.Println("json result:", string(result))
 
 	TestStruct(&a)
 	fmt.Println(a)
