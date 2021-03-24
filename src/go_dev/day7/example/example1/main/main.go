@@ -19,6 +19,7 @@ func main() {
 
 	//var balancer balance.Balancer
 	//var conf = "random"
+
 	var balanceName = "random"
 	if len(os.Args) > 1 {
 		balanceName = os.Args[1]
@@ -34,15 +35,27 @@ func main() {
 	*/
 	//balancer := &balance.RandomBalance{}  //实现负载均衡算法
 	//balancer := &balance.RoundRobinBalance{} //实现rr轮循算法
+
 	for {
 		inst, err := balance.DoBalance(balanceName, insts)
 		if err != nil {
-			fmt.Println("do balance err:", err)
+			//fmt.Println("do balance err:", err)
+			fmt.Fprintf(os.Stdout, "do balance err\n")
 			continue
 		}
 		fmt.Println(inst)
 		time.Sleep(time.Second)
 	}
+
+	/*
+		file, err := os.OpenFile("C:/test.log", os.O_CREATE|os.O_WRONLY, 0664)
+		if err != nil {
+			fmt.Println("open file err,:", err)
+			return
+		}
+		fmt.Fprintf(file, "do balance err\n")
+		file.Close()
+	*/
 }
 
 /*
@@ -54,6 +67,9 @@ D:\project>main.exe
 192.168.119.151:8080
 192.168.237.37:8080
 192.168.167.131:8080
+D:\project>main.exe  hash
+D:\project>main.exe  roundrobin
+D:\project>main.exe  xxx
 
 ctrl+b打开和显示和隐藏左边工程project
 */
