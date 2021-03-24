@@ -1,5 +1,7 @@
 package balance
 
+import "strconv"
+
 type Instance struct {
 	host string
 	port int
@@ -18,4 +20,8 @@ func (p *Instance) GetHost() string {
 
 func (p *Instance) GetPort() int {
 	return p.port
+}
+
+func (p *Instance) String() string {
+	return p.host + ":" + strconv.Itoa(p.port)
 }
