@@ -57,3 +57,5 @@ func main() {
 	fmt.Printf("other count:%d\n", count.OtherCount)
 
 }
+
+//https://github.com/gohah/go-demo  全套源代码
