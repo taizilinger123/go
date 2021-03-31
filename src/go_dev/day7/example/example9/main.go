@@ -35,6 +35,39 @@ func testStruct() (ret string, err error) {
 	return
 }
 
+func testMap() (ret string, err error) {
+	var m map[string]interface{}
+	m = make(map[string]interface{})
+	m["username"] = "user1"
+	m["age"] = 18
+	m["sex"] = "man"
+
+	data, err := json.Marshal(m)
+	if err != nil {
+		err = fmt.Errorf("json.marshal failed, err:", err)
+		return
+	}
+	ret = string(data)
+	return
+}
+
+func test2() {
+	data, err := testMap()
+	if err != nil {
+		fmt.Println("test map failed, ", err)
+		return
+	}
+
+	var m map[string]interface{}
+	m = make(map[string]interface{})
+	err = json.Unmarshal([]byte(data), &m)
+	if err != nil {
+		fmt.Println("Unmarshal failed, ", err)
+		return
+	}
+	fmt.Println(m)
+}
+
 func test() {
 	data, err := testStruct()
 	if err != nil {
@@ -52,7 +85,8 @@ func test() {
 }
 
 func main() {
-	test()
+	//test()
+	test2()
 }
 
 // PS D:\project> go run "d:\project\src\go_dev\day7\example\example9\main.go"
