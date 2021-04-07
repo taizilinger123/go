@@ -41,7 +41,7 @@ func main() {
 		go calc(intChan, resultChan, exitChan)
 	}
 
-	//等待所有计算的goroutine全部退出,下面是一个携程go func(){}()方式
+	//等待所有计算的goroutine全部退出,下面是一个携程go func(){}()方式，开一个goroutine
 	go func() {
 		for i := 0; i < 8; i++ {
 			//<-exitChan //只是取出来不关注它的值
