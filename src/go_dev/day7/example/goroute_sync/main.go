@@ -2,46 +2,45 @@ package main
 
 import (
 	"fmt"
-	"sync"
 	"time"
 )
 
-var (
-	m    = make(map[int]uint64)
-	lock sync.Mutex
-)
+func calc(taskChan chan int, resChan chan int) {
+	for v := range taskChan {
+		flag := true
+		for i := 2; i < v; i++ {
+			if v%i == 0 {
+				flag = false
+				break
+			}
+		}
 
-type task struct {
-	n int
-}
-
-func calc(t *task) {
-	var sum uint64
-	sum = 1
-	for i := 1; i < t.n; i++ {
-		sum *= uint64(i)
+		if flag {
+			resChan <- v
+		}
 	}
-
-	fmt.Println(t.n, sum)
-	lock.Lock()
-	m[t.n] = sum
-	lock.Unlock()
 }
 
 func main() {
-	for i := 0; i < 16; i++ {
-		t := &task{n: i}
-		go calc(t)
+	intChan := make(chan int, 1000)
+	resultChan := make(chan int, 1000)
+
+	go func() {
+		for i := 0; i < 10000; i++ {
+			intChan <- i
+		}
+
+		close(intChan)
+	}()
+
+	for i := 0; i < 8; i++ {
+		go calc(intChan, resultChan)
 	}
 
-	time.Sleep(10 * time.Second)
-	lock.Lock()
-	for k, v := range m {
-		fmt.Printf("%d! = %v\n", k, v)
-	}
-	lock.Unlock()
+	go func() {
+		for v := range resultChan {
+			fmt.Println(v)
+		}
+	}()
+	time.Sleep(time.Second * 10)
 }
-
-// cmd:
-// D:\project>go  build   -race  go_dev/day7/example/goroute_sync
-// D:\project>goroute_sync.exe
