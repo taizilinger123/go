@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func calc(taskChan chan int, resChan chan int, exitChan chan bool) {
 	for v := range taskChan {
@@ -45,8 +43,8 @@ func main() {
 	go func() {
 		for i := 0; i < 8; i++ {
 			//<-exitChan //只是取出来不关注它的值
-			a := <-exitChan
-			fmt.Println(a)
+			<-exitChan
+			fmt.Println("wait goroute ", i, " exited")
 		}
 		close(resultChan)
 	}()
