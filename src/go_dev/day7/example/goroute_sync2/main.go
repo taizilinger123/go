@@ -1,13 +1,45 @@
-package main  
+package main
 
-func send(ch chan int) {
+import (
+	"fmt"
+)
+
+func send(ch chan int, exitChan chan struct{}) {
 	for i := 0; i < 10; i++ {
-		ch <- i 
+		ch <- i
 	}
+
+	close(ch)
+	var a struct{}
+	exitChan <- a
+	fmt.Println("send exit")
 }
 
-func recv(ch chan int) {
-    for {
-		 
+func recv(ch chan int, exitChan chan struct{}) {
+	for {
+		v, ok := <-ch
+		if !ok {
+			break
+		}
+		fmt.Println(v)
+	}
+
+	var a struct{}
+	exitChan <- a
+	fmt.Println("recv exit")
+}
+
+func main() {
+	ch := make(chan int, 10)
+	exitChan := make(chan struct{}, 2)
+	go send(ch, exitChan)
+	go recv(ch, exitChan)
+
+	var total = 0
+	for _ = range exitChan {
+		total++
+		if total == 2 {
+			break
+		}
 	}
 }
