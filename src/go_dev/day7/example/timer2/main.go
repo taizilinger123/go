@@ -24,3 +24,5 @@ func main() {
 
 	time.Sleep(time.Second * 100)
 }
+
+//go env -w GOPROXY=https://goproxy.io,direct
