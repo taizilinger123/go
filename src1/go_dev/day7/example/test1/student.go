@@ -26,7 +26,6 @@ func (p *student) Load() (err error) {
 	if err != nil {
 		return
 	}
-
-	err = json.Unma
-
+    
+	err = json.
 }
