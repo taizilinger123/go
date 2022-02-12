@@ -27,6 +27,4 @@ func (p *student) Load() (err error) {
 		return
 	}
 
-	err = json.Unmarshal(data []byte, v interface{})
-
 }
