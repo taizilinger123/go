@@ -13,7 +13,7 @@ func TestAdd(t *testing.T) {
 }
 
 func TestSub(t *testing.T) {
-	r := add(2, 4)
+	r := sub(2, 4)
 	if r != -2 {
 		t.Fatalf("sub(2, 4) error, expect:%d, actual:%d", 6, r)
 	}
