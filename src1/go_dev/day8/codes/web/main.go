@@ -25,6 +25,15 @@ func main() {
 		name := ctx.Input.Query("name")
 		ctx.Output.Context.WriteString(fmt.Sprintf("(POST)你输入的名字是: %s", name))
 	})
+	// beego.Get("/any", func(ctx *context.Context) {
+	// 	name := ctx.Input.Query("name")
+	// 	ctx.Output.Context.WriteString(fmt.Sprintf("(get)你输入的名字是: %s", name))
+	// })
+	//beego.Delete
+	//beego.Put
+	//beego.Option
+	//beego.Head
+	//beego.Connect
 	beego.Any("/any", func(ctx *context.Context) {
 		name := ctx.Input.Query("name")
 		ctx.Output.Context.WriteString(fmt.Sprintf("(%s)你输入的名字是: %s", ctx.Input.Method(), name))
